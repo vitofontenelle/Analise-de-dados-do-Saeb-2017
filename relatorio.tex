@@ -1,0 +1,583 @@
+%% abtex2-modelo-glossarios.tex, v-1.9.7 laurocesar
+%% Copyright 2012-2018 by abnTeX2 group at http://www.abntex.net.br/
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%%
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abtex2-modelo-glossarios.tex,
+%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
+%%
+                     
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Exemplo de glossários com o pacote glossaries e abntex2
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+ 
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,			% para impressão em recto e verso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{abntex2}
+ 
+ 
+% ---
+% PACOTES
+% ---
+ 
+% ---
+% Pacotes fundamentais
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage[normalem]{ulem}
+\usepackage{tablefootnote}
+
+% ---
+
+% ---
+% Pacotes glossaries
+% ---
+\usepackage[subentrycounter,seeautonumberlist,nonumberlist=true]{glossaries}
+% para usar o xindy ao invés do makeindex:
+%\usepackage[xindy={language=portuguese},subentrycounter,seeautonumberlist,nonumberlist=true]{glossaries}
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+ 
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Análise Descritiva dos Dados do Saeb - 2017}
+\autor{Vito Genovese F. N. de Amorim}
+\local{Brasil}
+\data{10/11/2024}
+\orientador{Lauro César Araujo}
+\coorientador{Equipe \abnTeX}
+\instituicao{%
+  Universidade do Brasil -- UBr
+  \par
+  Faculdade de Arquitetura da Informação
+  \par
+  Programa de Pós-Graduação}
+\tipotrabalho{Tese (Doutorado)}
+% O preambulo deve conter o tipo do trabalho, o objetivo,
+% o nome da instituição e a área de concentração
+\preambulo{Modelo de texto com glossário conforme as
+as normas ABNT apresentado à comunidade de usuários \LaTeX.}
+% ---
+ 
+ 
+% ---
+% Configurações de aparência do PDF final
+ 
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+ 
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{glossários}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+
+% ---
+% Tamanho das notas de roda pé
+% ---
+\makeatletter
+\renewcommand\footnotesize{%
+   \@setfontsize\footnotesize\@ixpt{11}%
+   \abovedisplayskip 8\p@ \@plus2\p@ \@minus4\p@
+   \abovedisplayshortskip \z@ \@plus\p@
+   \belowdisplayshortskip 4\p@ \@plus2\p@ \@minus2\p@
+   \def\@listi{\leftmargin\leftmargini
+               \topsep 4\p@ \@plus2\p@ \@minus2\p@
+               \parsep 2\p@ \@plus\p@ \@minus\p@
+               \itemsep \parsep}%
+   \belowdisplayskip \abovedisplayskip
+}
+\makeatother
+% ---
+% Espaçamentos entre linhas e parágrafos
+% ---
+ 
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+ 
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+ 
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+ 
+% ---
+% GLOSSARIO
+% ---
+ 
+% ---
+% entradas do glossario
+
+
+% ---
+% Exemplo de configurações do glossairo
+\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}  
+ \glsseelist{#2}}
+% ---
+              
+                
+% ----
+% Início do documento
+% ----
+\begin{document}
+ 
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing
+ 
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+ 
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% Lista de Figuras
+% ---
+\pdfbookmark[0]{Lista de Figuras}{lof}  % Cria um marcador para a lista de figuras no PDF
+\listoffigures*
+\cleardoublepage  % Insere uma nova página após a lista de figuras
+% ---
+% ---
+% Lista de Tabelas
+% ---
+\pdfbookmark[0]{Lista de Tabelas}{lot}  % Cria um marcador para a lista de tabelas no PDF
+\listoftables*
+\cleardoublepage  % Insere uma nova página após a lista de tabelas
+% ---
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+  
+ 
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+ 
+% ----------------------------------------------------------
+% Introdução
+% ----------------------------------------------------------
+\chapter*[Introdução]{Introdução}
+\addcontentsline{toc}{chapter}{Introdução}
+ Apresentarei neste relatório uma análise descritiva dos dados de 2017 da Saeb (Sistema
+ de Avaliação da Educação Básica). A Saeb é um conjunto de avaliações em larga escala que
+ permite que o Inep faça um diagnóstico da educação brasileira e dos fatores que que a influênciam. 
+ As avalições são feitas por meio de testes e questionários aplicados de 2 em 2
+ anos. \\
+ Neste relatório iremos avaliar as seguintes variáveis: \\
+ REGIAO: Região de localização da escola do estudante (1-Norte, 2-Nordeste, 3-Sudeste, 4-Sul, 5-Centro-Oeste) \\
+ LOCALIZACAO: Localização da escola do estudante(1-urbana ou 2-rural) \\
+ COMPUTADOR: Tem computador em casa? (Não tem, Sim, um, Sim, dois, Sim, três, Sim, quatro ou mais) \\
+ RACA\_COR: Raça/cor do estudante (A-Branca, B-Preta, C-Parda, D-Amarela, E-Indígena, F-Não quero declarar) \\
+ NOTA\_LP: Proficiência em Língua Portuguesa transformada na escala única do SAEB, com média = 250, desvio = 50 (do SAEB/97) \\
+ NOTA\_MT: Proficiência do aluno em Matemática transformada na escala única do SAEB, com média = 250, desvio = 50 (do SAEB/97) \\
+
+
+ 
+% ---
+% Capitulo que faz uso de elementos do glossario
+% ---
+\chapter{Análise Descritiva dos dados da Saeb}
+\clearpage
+% ---
+\section{Variáveis qualitativas}
+%-------------------------
+% Raça-cor dos alunos
+%-------------------------
+\subsection{Raça/cor}
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figures/raca.png}
+    \caption{Números de alunos por raça/cor}
+    \label{fig:exemplo}
+\end{figure}
+\begin{table}[h!]
+   \centering
+\caption{Tabela com o percentual de participação por raça/cor autodeclarada.}
+      \begin{tabular}{ccc}
+      \hline
+      Raça/cor           & \multicolumn{1}{l}{Frequência} & \multicolumn{1}{l}{Frequência(\%)} \\
+      \hline
+      \hline
+      Parda              & 446.0                          & 44.6                               \\
+      \hline
+      Branca             & 299.0                          & 29.9                               \\
+      \hline
+      Não quero declarar & 108.0                          & 10.8                               \\
+      \hline
+      Preta              & 100.0                          & 10.0                               \\
+      \hline
+      Amarela            & 31.0                           & 3.1                                \\
+      \hline
+      Indígena           & 16.0                           & 1.6                                \\ \hline
+\end{tabular} \\
+{\footnotesize Fonte: Inep (Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira).}
+\label{tab:Raça/cor}
+\end{table}
+\vspace*{1cm}
+\addcontentsline{toc}{subsection}{Raça/cor}
+Podemos observar, por meio da tabela e do gráfico acima, que a maioria, 44,6\%, dos alunos
+se autodeclaram pardos. O que coincide com o censo, no qual a maioria dos brasileiros se autodeclaram pardos.
+\clearpage
+%-------------------------
+% Localização das escolas dos alunos
+%-------------------------
+\subsection{Localização}
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figures/localizacao.png}
+    \caption{Localização das escolas onde os alunos realizaram as provas}
+    \label{fig:exemplo}
+\end{figure}
+\begin{table}[h!]
+   \centering
+\caption{Quantidade de alunos por localização das escolas.}
+\begin{tabular}{lcc}
+\hline
+Localização & \multicolumn{1}{l}{Frequência} & \multicolumn{1}{l}{Frequência(\%)} \\ \hline
+\hline
+Urbana      & 883.0                          & 88.3                               \\ \hline
+Rural       & 117.0                          & 11.7                               \\ \hline
+\end{tabular} \\
+\footnotesize Fonte: Inep (Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira).
+\end{table}
+\addcontentsline{toc}{subsection}{Localização}
+A maioria absoluta (88,3\%) das escolas estão localizadas em zonas urbanas. O que era
+esperado dado que a maioria da população brasileira vive em zonas urbanas.
+\clearpage
+%-------------------------
+% Categoria administrativa das escolas
+%-------------------------
+\subsection{Categoria administrativa da escola dos alunos}
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figures/dependencia.png}
+    \caption{Dependência administrativa das escolas dos alunos}
+    \label{fig:exemplo}
+\end{figure}
+\begin{table}[h!]
+   \centering
+\caption{Dependência administrativa por alunos.}
+\begin{tabular}{lcc}
+\hline
+Dependência & \multicolumn{1}{l}{Frequência} & \multicolumn{1}{l}{Frequência(\%)} \\ \hline
+\hline
+Estadual    & 526.0                          & 52.6                               \\ \hline
+Municipal   & 471.0                          & 47.1                               \\ \hline
+Federal     & 3.0                            & 0.3                                \\ \hline
+\end{tabular} \\
+\footnotesize Fonte: Inep (Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira).
+\end{table}
+\addcontentsline{toc}{subsection}{Localização}
+Pelo fato de existir um menor número de escolas federais no país, isso aparece nos dados,
+já que a quantidade de escolas federais da amostra é muito pequeno, 0,3\% em comparaçao
+com as escolas municipais (47,1\%) e estaduais (52,6\%) que são a maioria das escolas públicas. \\
+A participação das escolas particulares no Saeb é facultativa. Portanto ou, nenhuma participou ou,
+o número de escolas que participarão foi tão ínfimo que não apareceram na amostra.
+\clearpage
+%-------------------------
+% Região das escolas
+%-------------------------
+\subsection{Região}
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figures/regiao.png}
+    \caption{Região onde foram realizadas as provas}
+    \label{fig:exemplo}
+\end{figure}
+% Please add the following required packages to your document preamble:
+% \usepackage[normalem]{ulem}
+% \useunder{\uline}{\ul}{}
+\begin{table}[h!]
+   \centering
+\caption{Percentual de participação por região}
+\begin{tabular}{lcc}
+\hline
+\text{Região} & \multicolumn{1}{l}{\text{Frequência}} & \multicolumn{1}{l}{\text{Frequência(\%)}} \\ \hline
+\hline
+Sudeste         & 347.0                                   & 34.7                                        \\ \hline
+Nordeste        & 326.0                                   & 32.6                                        \\ \hline
+Sul             & 138.0                                   & 13.8                                        \\ \hline
+Norte           & 110.0                                   & 11.0                                        \\ \hline
+Centro-Oeste    & 79.0                                    & 7.9                                         \\ \hline
+\end{tabular} \\
+\footnotesize Fonte: Inep (Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira).
+\end{table}
+\addcontentsline{toc}{subsection}{Região}
+Como podemos observar no gráfico a maior parte das escolas são das regiões Sudeste e Nordeste,
+o que era esperado já que são as duas regiões mais populosas do Brasil.
+\clearpage
+%-----------------------------------
+% Se o aluno possui computador em casa
+%-----------------------------------
+\subsection{Tem computador em casa?}
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figures/computador.png}
+    \caption{Se o aluno possui computador em casa}
+    \label{fig:exemplo}
+\end{figure}
+\begin{table}[h!]
+   \centering
+\caption{Quantos computadores o aluno possui em casa.}
+\begin{tabular}{lcc}
+\hline
+Possui computador em casa? & \multicolumn{1}{l}{Frequência} & \multicolumn{1}{l}{Frequência(\%)} \\ \hline
+\hline
+Não tem                    & 436.0                          & 43.6                               \\ \hline
+Sim, um                    & 414.0                          & 41.4                               \\ \hline
+Sim, dois                  & 94.0                           & 9.4                                \\ \hline
+Sim, três                  & 28.0                           & 2.8                                \\ \hline
+Não respondeu              & 16.0                           & 1.6                                \\ \hline
+Sim, quatro ou mais        & 11.0                           & 1.1                                \\ \hline
+Não sei                    & 1.0                            & 0.1                                \\ \hline
+\end{tabular} \\
+\footnotesize Fonte: Inep (Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira).
+\end{table}
+\addcontentsline{toc}{subsection}{Tem computador em casas?}
+De todos os alunos que fizeram a avaliação 43,6\% não possuem computador em casa, enquanto 41,4\% possuem somente um computador
+na sua residência. Isso nos mostra como a desigualdade de renda afeta o ensino, pois o computador
+é, nos dias de hoje, uma ferramenta essencial para o aprensisado.
+\clearpage
+%------------------------
+% Variáveia Quantitativas
+%------------------------
+\clearpage
+%------------------------
+% Notas matemática
+%------------------------
+\section{Variáveis Quantitativas}
+\subsection{Nota de matemática}
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figures/histmat.png}
+    \caption{Histograma das notas de matemática dos alunos do Saeb}
+    \label{fig:exemplo}
+\end{figure}
+\begin{table}[h!]
+   \centering
+\caption{Notas de matemática por alunos separadas por classes.}
+\begin{tabular}{lcc}
+\hline
+Notas de Matemática & \multicolumn{1}{l}{Frequência} & \multicolumn{1}{l}{Frequência} \\ \hline
+\hline
+260 - 285        & 200.0                          & 20.0                           \\ \hline
+235 - 260       & 190.0                          & 19.0                           \\ \hline
+210 - 235        & 166.0                          & 16.6                           \\ \hline
+285 - 310        & 126.0                          & 12.6                           \\ \hline
+185 - 210        & 116.0                          & 11.6                           \\ \hline
+160 - 185        & 77.0                           & 7.7                            \\ \hline
+310 - 335        & 65.0                           & 6.5                            \\ \hline
+335 - 360        & 25.0                           & 2.5                            \\ \hline
+135 - 160        & 24.0                           & 2.4                            \\ \hline
+360 - 385        & 9.0                            & 0.9                            \\ \hline
+385 - 410        & 2.0                            & 0.2                            \\ \hline
+\end{tabular} \\
+\footnotesize Fonte: Inep (Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira).
+\end{table}
+\addcontentsline{toc}{subsection}{Notas de matemática}
+Podemos observar ao analisarmos o histograma que as notas de matemática dos alunos seguem
+uma distribuição normal.
+\clearpage
+
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figures/boxmat.png}
+    \caption{Boxplot das notas de matemática}
+    \label{fig:exemplo}
+\end{figure}
+\begin{table}[h!]
+   \centering
+   \caption{Estatísticas das notas de matemática}
+\begin{tabular}{|l|c|}
+\hline
+Estatísticas & \multicolumn{1}{l|}{Notas de Matemática} \\ \hline
+Curtose      & 2,71                                     \\ \hline
+Mediana      & 250,59                                   \\ \hline
+Média        & 248,94                                   \\ \hline
+Máximo       & 409,66                                   \\ \hline
+Mínimo       & 135,46                                   \\ \hline
+Assimetria   & 0,061                                    \\ \hline
+\end{tabular}
+\end{table}
+\addcontentsline{toc}{subsection}{Boxplot e estatística de matemática}
+Podemos observar ao anarlisarmos o boxplot que as notas de matemática tem uma variabilidade
+baixa e com poucos outliers, somente dois no caso. \\
+Podemos observar pelas estatísticas das notas de matemática que a mediana e a média são
+praticamente iguais, dado que a distribuição das notas é simétrica. \\
+A curtose é quase igual a 3 e a assimetria é muito pequena. Portanto podemos considerar
+a distribuição simétrica.
+\clearpage
+
+\subsection{Nota de Português}
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figures/histport.png}
+    \caption{Histograma das notas de português dos alunos do Saeb}
+    \label{fig:exemplo}
+\end{figure}
+\begin{table}[h!]
+   \centering
+\caption{Notas de português por alunos separadas por classes.}
+\begin{tabular}{lcc}
+\hline
+Notas     & \multicolumn{1}{l}{Frequência} & \multicolumn{1}{l}{Frequência(\%)} \\ \hline
+\hline
+255 - 280 & 213.0                          & 21.3                               \\ \hline
+230 - 255 & 184.0                          & 18.4                               \\ \hline
+205 - 230 & 158.0                          & 15.8                               \\ \hline
+280 - 305 & 132.0                          & 13.2                               \\ \hline
+180 - 205 & 117.0                          & 11.7                               \\ \hline
+305 - 330 & 74.0                           & 7.4                                \\ \hline
+155 - 180 & 57.0                           & 5.7                                \\ \hline
+330 - 355 & 33.0                           & 3.3                                \\ \hline
+130 - 155 & 20.0                           & 2.0                                \\ \hline
+355 - 380 & 10.0                           & 1.0                                \\ \hline
+\end{tabular} \\
+\footnotesize Fonte: Inep (Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira).
+\end{table}
+\addcontentsline{toc}{subsection}{Notas de português}
+O histograma nos mostra que as notas de português, tal qual as de matemática, 
+também seguem um distribuição normal. Com a diferença que tivemos um número um pouco
+maior de notas acimas de 350 na prova de matemática.
+\clearpage
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figures/boxport.png}
+    \caption{Boxplot das notas de português}
+    \label{fig:exemplo}
+\end{figure}
+\begin{table}[h!]
+   \centering
+   \caption{Estatísticas das notas de português}
+\begin{tabular}{|l|c|}
+\hline
+Estatísticas & \multicolumn{1}{l|}{Notas de Português} \\ \hline
+Curtose      & 2,56                                    \\ \hline
+Mediana      & 256,81                                  \\ \hline
+Média        & 253,00                                  \\ \hline
+Máximo       & 374,13                                  \\ \hline
+Mínimo       & 130,58                                  \\ \hline
+Assimetria   & -0,065                                  \\ \hline
+\end{tabular}
+\end{table}
+\addcontentsline{toc}{subsection}{Boxplot e estatísticas de português}
+Tal qual o boxplot de matemática, o de português também possui pouca variabilidade,
+mas diferente do de matemática as notas de português não possuem outliers. \\
+A mediana e a média estão bastante próximas.
+A curtose é um pouco menor que a curtose das notas de matématica, mas mesmo assim muito
+próxima de 3 e a assimetria negativa (assimetria a esquerda), diferente da de matématica que era positiva, 
+mas também muito pequena. \\
+Portanto podemos considerar que as notas de português seguem
+uma distribuição simétrica.
+\clearpage
+
+\subsection{Comparativo entre as notas de português e matemática}
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figures/hist_comparacao.png}
+    \caption{Histograma comparando as notas de português e matemática}
+    \label{fig:exemplo}
+\end{figure}
+\addcontentsline{toc}{subsection}{Comparativo entre as notas}
+Para finalizar, temos um histograma comparando as duas distribuições. Podemos observar
+que as distribuições são muito parecidas, o que difere as duas são as pequenas assimetrias,
+positiva no caso das notas de matématica e negativa no caso das notas de português.
+\clearpage
+
+
+% ----------------------------------------------------------
+% Capitulo com exemplos de comandos inseridos de arquivo externo 
+% ----------------------------------------------------------
+
+\include{abntex2-modelo-include-comandos}
+ 
+ 
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+ 
+ 
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{abntex2-modelo-references}
+ 
+  
+ 
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+ 
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+ 
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+ 
+\end{document}
